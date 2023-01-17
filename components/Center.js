@@ -4,6 +4,7 @@ import { shuffle } from 'lodash'
 import useSpotify from '@/hooks/useSpotify'
 import Image from 'next/image'
 import { BiChevronDown } from "react-icons/bi"
+import SongsList from './SongsList'
 
 const colors = [
   'from-indigo-500',
@@ -42,8 +43,14 @@ const Center = () => {
       </header>
 
       <section className={`flex items-end space-x-7 bg-gradient-to-b to-black ${color} h-80 text-white p-8`}>
-        
+        <Image className='h-44 w-44 shadow-2xl' src={playlist?.images?.[0]?.url} alt='track image'/>   
+        <div>
+          <p>PLAYLIST</p>
+          <h1 className='text-2xl md:text-3xl xl:text-5xl font-bold'>{playlist?.name}</h1>
+        </div>
       </section>
+      
+      <SongsList />
     </div>
   )
 }
