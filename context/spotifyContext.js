@@ -7,6 +7,8 @@ const SpotifyContextProvider = ({children}) => {
 
     const [playlist, setPlaylist] = useState()
     const [playlistId, setPlaylistId] = useState('4LnTQT9pZuyXG96WS9RNzU')
+    const [trackId, setTrackId] = useState(null)
+    const [isPlaying, setIsPlaying] = useState(false)
 
     useEffect(() => {
         spotifyApi.getPlaylist(playlistId)
@@ -22,6 +24,10 @@ const SpotifyContextProvider = ({children}) => {
             setPlaylist,
             playlistId,
             setPlaylistId,
+            trackId,
+            setTrackId,
+            isPlaying,
+            setIsPlaying
         }} >
             {children}
         </SpotifyContext.Provider>
