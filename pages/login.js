@@ -3,10 +3,11 @@ import Image from 'next/image'
 import Logo from '../public/spotifyLogo.png'
 
 const Login = ({providers}) => {
+    console.log(providers)
   return (
     <div className='flex flex-col items-center justify-center bg-black min-h-screen w-full'>
         <Image width={208} src={Logo} alt='spotifyLogo' />
-        {/* {
+        {
             Object.values(providers).map((provider) => (
                 <div key={provider.name}>
                     <button 
@@ -17,7 +18,7 @@ const Login = ({providers}) => {
                     </button>
                 </div>
             ))
-        } */}
+        }
     </div>
   )
 }
