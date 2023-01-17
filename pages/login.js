@@ -1,6 +1,6 @@
 import { getProviders, signIn } from 'next-auth/react'
 import Image from 'next/image'
-import Logo from 'https://links.papareact.com/9xl'
+import Logo from '../public/spotifyLogo.png'
 
 const Login = ({providers}) => {
   return (
