@@ -10,17 +10,20 @@ const useSongInfo = () => {
     const [songInfo, setSongInfo] = useState(null)
     
     useEffect(() => {
-        if(trackId){
-            const trackInfo = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${spotifyApi.getAccessToken()}`
-                    }
-                }).then( res => res.json())
+        const fetchSongInfo = async () => {
+            if(trackId){
+                const trackInfo = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`,
+                    {
+                        headers: {
+                            Authorization: `Bearer ${spotifyApi.getAccessToken()}`
+                        }
+                    }).then( res => res.json())
 
-            setSongInfo(trackInfo)
-
+                setSongInfo(trackInfo)
+            }
         }
+
+        fetchSongInfo()
     }, [trackId, spotifyApi])
 
     return songInfo
