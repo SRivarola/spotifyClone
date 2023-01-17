@@ -18,8 +18,6 @@ const colors = [
 const Center = () => {
 
   const { data: session } = useSession()
-  const image = session?.user.image
-
   const spotifyApi = useSpotify()
 
   const [color, setColor] = useState(null)
@@ -33,9 +31,13 @@ const Center = () => {
     <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide text-white">
       <header className='absolute top-5 right-8'>
         <div onClick={signOut} className='flex items-center bg-black space-x-3 opacity-80 hover:opacity-90 cursor-pointer rounded-full p-1 pr-2'>
-          <Image className='rounded-full' width={40} height={40} src={image} alt='profilePicture' />
-          <h2>{session?.user.name}</h2>
-          <BiChevronDown className='h-5 w-5' />
+          {
+            session && (<>
+              <Image className='rounded-full' width={40} height={40} src={session?.user.image} alt='profilePicture' />
+              <h2>{session?.user.name}</h2>
+              <BiChevronDown className='h-5 w-5' />
+            </>)
+          }
         </div>
       </header>
     </div>
