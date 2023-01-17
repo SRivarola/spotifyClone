@@ -24,10 +24,18 @@ const Center = () => {
   const { playlistId } = useContext(SpotifyContext);
   const [color, setColor] = useState(null)
   const [playlist, setPlaylist] = useState([])
-  
+
   useEffect(() => {
     setColor(shuffle(colors).pop())
-  }, [])
+  }, [playlistId])
+
+  useEffect(() => {
+    spotifyApi.getPlaylist(playlistId)
+      .then((data) => {
+          setPlaylist(data.body)
+      })
+      .catch((err) => console.log('Something went wrong! ', err))
+  }, [spotifyApi, playlistId]);
 
   return (
     <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide text-white">

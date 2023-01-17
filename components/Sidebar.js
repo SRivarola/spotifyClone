@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import useSpotify from '@/hooks/useSpotify'
 import SidebarButton from './SidebarButton'
 import { AiOutlineHome, AiOutlineSearch, AiOutlinePlusCircle, AiFillHeart } from "react-icons/ai"
 import { HiOutlineLibrary } from "react-icons/hi"
 import { BiRss } from "react-icons/bi"
+import { SpotifyContext } from '@/context/spotifyContext'
 
 const Sidebar = () => {
 
     const spotifyApi = useSpotify()
     const { data: session } = useSession()
     const [ playlists, setPlaylists ] = useState([])
-    const [ playlistId, setPlaylistId ] = useState([])
+    const { setPlaylistId } = useContext(SpotifyContext)
 
     useEffect(() => {
         if(spotifyApi.getAccessToken()){
