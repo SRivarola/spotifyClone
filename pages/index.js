@@ -25,16 +25,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="bg-black h-screen overflow-hidden">
-        <main className='flex'>
-          <Sidebar />
-          <Center />
-        </main>
+        {
+          session && (<>
+            <main className='flex'>
+              <Sidebar />
+              <Center />
+            </main>
 
-        <div className='sticky bottom-0'>
-          <Player />
-        </div>
-        
-       
+            <div className='sticky bottom-0'>
+              <Player />
+            </div>
+          </>)
+        }
       </div>
     </>
   )
