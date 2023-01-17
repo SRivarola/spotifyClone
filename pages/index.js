@@ -1,10 +1,21 @@
-import { getSession } from 'next-auth/react'
+import { useEffect } from 'react'
+import { getSession, useSession } from 'next-auth/react'
+import Router from 'next/router'
 import Center from '@/components/Center'
 import Player from '@/components/Player'
 import Sidebar from '@/components/Sidebar'
 import Head from 'next/head'
 
 export default function Home() {
+
+  const {data: session} = useSession()
+
+  useEffect(() => {
+    if(!session){
+      Router.push('/login')
+    }
+  }, [])
+
   return (
     <>
       <Head>
