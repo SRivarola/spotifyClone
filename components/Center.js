@@ -33,7 +33,7 @@ const Center = () => {
         <div onClick={signOut} className='flex items-center bg-black space-x-3 opacity-80 hover:opacity-90 cursor-pointer rounded-full p-1 pr-2'>
           {
             session && (<>
-              <Image className='rounded-full' width={40} height={40} src={session?.user.image} alt='profilePicture' />
+              <img className='rounded-full' width={40} height={40} src={session?.user.image} alt='profilePicture' />
               <h2>{session?.user.name}</h2>
               <BiChevronDown className='h-5 w-5' />
             </>)
