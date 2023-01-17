@@ -1,7 +1,6 @@
 import { signOut, useSession } from 'next-auth/react'
 import { useContext, useEffect, useState } from 'react'
 import { shuffle } from 'lodash'
-import useSpotify from '@/hooks/useSpotify'
 import Image from 'next/image'
 import { BiChevronDown } from "react-icons/bi"
 import SongsList from './SongsList'
@@ -20,21 +19,12 @@ const colors = [
 const Center = () => {
 
   const { data: session } = useSession()
-  const spotifyApi = useSpotify()
   const { playlistId, playlist, setPlaylist } = useContext(SpotifyContext);
   const [color, setColor] = useState(null)
 
   useEffect(() => {
     setColor(shuffle(colors).pop())
   }, [playlistId])
-
-  useEffect(() => {
-    spotifyApi.getPlaylist(playlistId)
-      .then((data) => {
-          setPlaylist(data.body)
-      })
-      .catch((err) => console.log('Something went wrong! ', err))
-  }, [spotifyApi, playlistId]);
 
   return (
     <div className="flex-grow h-screen overflow-y-scroll scrollbar-hide text-white">
