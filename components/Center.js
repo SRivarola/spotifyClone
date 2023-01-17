@@ -1,10 +1,11 @@
 import { signOut, useSession } from 'next-auth/react'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { shuffle } from 'lodash'
 import useSpotify from '@/hooks/useSpotify'
 import Image from 'next/image'
 import { BiChevronDown } from "react-icons/bi"
 import SongsList from './SongsList'
+import { SpotifyContext } from '@/context/spotifyContext'
 
 const colors = [
   'from-indigo-500',
@@ -20,10 +21,10 @@ const Center = () => {
 
   const { data: session } = useSession()
   const spotifyApi = useSpotify()
-
+  const { playlistId } = useContext(SpotifyContext);
   const [color, setColor] = useState(null)
   const [playlist, setPlaylist] = useState([])
-
+  
   useEffect(() => {
     setColor(shuffle(colors).pop())
   }, [])
