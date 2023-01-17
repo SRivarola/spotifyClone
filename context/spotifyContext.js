@@ -4,13 +4,13 @@ export const SpotifyContext = createContext()
 
 const SpotifyContextProvider = ({children}) => {
 
-    const [playlistState, setPlaylistState] = useState()
+    const [playlist, setPlaylist] = useState([])
     const [playlistId, setPlaylistId] = useState('4LnTQT9pZuyXG96WS9RNzU')
 
     return (
         <SpotifyContext.Provider value={{
-            playlistState,
-            setPlaylistState,
+            playlist,
+            setPlaylist,
             playlistId,
             setPlaylistId,
         }} >

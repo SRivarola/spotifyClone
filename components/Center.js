@@ -21,9 +21,8 @@ const Center = () => {
 
   const { data: session } = useSession()
   const spotifyApi = useSpotify()
-  const { playlistId } = useContext(SpotifyContext);
+  const { playlistId, playlist, setPlaylist } = useContext(SpotifyContext);
   const [color, setColor] = useState(null)
-  const [playlist, setPlaylist] = useState([])
 
   useEffect(() => {
     setColor(shuffle(colors).pop())
